@@ -1,0 +1,22 @@
+/* Global layout-only styles. Colors/typography come from Angular Material's
+   M3 theme (src/material-theme.scss) — see mat.theme() and --mat-sys-* variables. */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0 0 0.5rem;
+}
+
+.hint {
+  color: var(--mat-sys-on-surface-variant);
+}

@@ -1,0 +1,51 @@
+<section class="page">
+  <header class="page__header">
+    <h1>{{ isEditMode() ? 'Edit user' : 'New user' }}</h1>
+    <a mat-button routerLink="/">Back to list</a>
+  </header>
+
+  @if (loadingUser()) {
+    <p class="hint">Loading user…</p>
+  } @else {
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName" />
+        @if (form.controls.firstName.hasError('required')) {
+          <mat-error>First name is required.</mat-error>
+        } @else if (form.controls.firstName.hasError('maxlength')) {
+          <mat-error>First name must be 100 characters or fewer.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" />
+        @if (form.controls.lastName.hasError('required')) {
+          <mat-error>Last name is required.</mat-error>
+        } @else if (form.controls.lastName.hasError('maxlength')) {
+          <mat-error>Last name must be 100 characters or fewer.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        @if (form.controls.email.hasError('required')) {
+          <mat-error>Email is required.</mat-error>
+        } @else if (form.controls.email.hasError('email')) {
+          <mat-error>Enter a valid email address.</mat-error>
+        } @else if (form.controls.email.hasError('maxlength')) {
+          <mat-error>Email must be 255 characters or fewer.</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form__actions">
+        <button mat-flat-button color="primary" type="submit" [disabled]="submitting()">
+          {{ submitting() ? 'Saving…' : 'Save' }}
+        </button>
+        <a mat-button routerLink="/">Cancel</a>
+      </div>
+    </form>
+  }
+</section>
