@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 
 # ---- Stage 1: build ----
-FROM maven:3.9.16-eclipse-temurin-21-noble AS build
+FROM maven:3-eclipse-temurin-26-noble AS build
 WORKDIR /build
 
 COPY pom.xml .
