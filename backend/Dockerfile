@@ -10,7 +10,7 @@ COPY src src
 RUN mvn -q package -DskipTests
 
 # ---- Stage 2: runtime ----
-FROM eclipse-temurin:21-jre-noble AS runtime
+FROM eclipse-temurin:25-jre-noble AS runtime
 WORKDIR /app
 
 RUN apt-get update \
