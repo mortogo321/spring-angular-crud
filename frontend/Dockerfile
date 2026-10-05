@@ -18,7 +18,7 @@ COPY . .
 RUN bun run build
 
 # Stage 2: serve the static bundle with nginx.
-FROM nginx:1.29-alpine AS runtime
+FROM nginx:1.31-alpine AS runtime
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/frontend/browser /usr/share/nginx/html
