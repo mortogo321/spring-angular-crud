@@ -6,7 +6,7 @@
 # CLI's minimum), so `ng build` itself must run on real Node. node:26-alpine
 # + the bun binary copied in gives us both (bun's source image must also be
 # the -alpine/musl variant to match node:26-alpine's libc).
-FROM node:26.10-alpine AS build
+FROM node:26.11-alpine AS build
 COPY --from=oven/bun:1.4.2-alpine /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
